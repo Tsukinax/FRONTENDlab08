@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Chase</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+        
+        #circle {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-color: #3498db;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="circle"></div>
+
+    <script>
+        const circle = document.getElementById('circle');
+        const circleRadius = 40; // half of width/height
+        
+        // Function to generate random position within screen bounds
+        function getRandomPosition() {
+            const maxX = window.innerWidth - 80;
+            const maxY = window.innerHeight - 80;
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+            return { x, y };
+        }
+        
+        // Function to move circle to new random location
+        function moveCircle() {
+            const pos = getRandomPosition();
+            circle.style.left = pos.x + 'px';
+            circle.style.top = pos.y + 'px';
+        }
+        
+        // Function to generate random color
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        
+        // Initialize circle position
+        moveCircle();
+        
+        // Listen to mouseover event (hover) - move to random location and change color
+        circle.addEventListener('mouseenter', function() {
+            moveCircle();
+            setTimeout(function() {
+                circle.style.backgroundColor = getRandomColor();
+            }, 50);
+        });
+        
+        // Listen to click event - move then change color
+        circle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            moveCircle();
+            // Change color after move animation completes
+            setTimeout(function() {
+                circle.style.backgroundColor = getRandomColor();
+            }, 50);
+        });
+    </script>
+</body>
+</html>
