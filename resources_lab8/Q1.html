@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Manipulation Using High-Order Functions</title>
+</head>
+<body>
+    <h1>Array Manipulation - Q1</h1>
+    <p>Open the browser console (F12) to see the results.</p>
+
+    <script>
+  
+        function processArray(arr, fn) {
+            return arr.map(fn);
+        }
+
+        function double(num) {
+            return num * 2;
+        }
+
+
+        const result1 = processArray([1, 2, 3,4,5], double);
+        console.log("Test 1 - Double:", result1); // [2, 4, 6]
+
+
+        function square(num) {
+            return num * num;
+        }
+
+        const result2 = processArray([1, 2, 3, 4, 5], square);
+        console.log("Test 2 - Square:", result2); // [1, 4, 9, 16, 25]
+    </script>
+</body>
+</html>

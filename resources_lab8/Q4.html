@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainbow</title>
+    <style>
+
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            padding-top: 50px;
+            transition: background-color 0.5s ease; 
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rainbow Background Changer</h1>
+    <p>Click a button to change the background color!</p>
+
+    <div id="button-container">
+        <button>RED</button>
+        <button>ORANGE</button>
+        <button>YELLOW</button>
+        <button>GREEN</button>
+        <button>BLUE</button>
+        <button>PURPLE</button>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll("button");
+
+      
+        buttons.forEach(button => {
+            button.addEventListener("click", function(event) {
+                
+              
+                document.body.style.backgroundColor = event.target.innerText;
+                
+            });
+        });
+    </script>
+</body>
+</html>
